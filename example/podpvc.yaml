@@ -1,19 +1,19 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: topolvm-pvc
+  name: topolvm-pvc-2
 spec:
   accessModes:
   - ReadWriteOnce
   resources:
     requests:
-      storage: 1Gi
+      storage: 10Gi
   storageClassName: topolvm-provisioner
 ---
 apiVersion: v1
 kind: Pod
 metadata:
-  name: my-pod
+  name: my-pod-2
   labels:
     app.kubernetes.io/name: my-pod
 spec:
@@ -27,4 +27,4 @@ spec:
   volumes:
     - name: my-volume
       persistentVolumeClaim:
-        claimName: topolvm-pvc
+        claimName: topolvm-pvc-2
