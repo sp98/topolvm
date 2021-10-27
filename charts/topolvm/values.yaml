@@ -29,7 +29,7 @@ image:
 # A scheduler extender for TopoLVM
 scheduler:
   # scheduler.enabled --  If true, enable scheduler extender for TopoLVM
-  enabled: true
+  enabled: false
 
   # scheduler.type -- If you run with a managed control plane (such as GKE, AKS, etc), topolvm-scheduler should be deployed as Deployment and Service.
   # topolvm-scheduler should otherwise be deployed as DaemonSet in unmanaged (i.e. bare metal) deployments.
@@ -322,7 +322,7 @@ controller:
 
   storageCapacityTracking:
     # controller.storageCapacityTracking.enabled -- Enable Storage Capacity Tracking for csi-provisoner.
-    enabled: false
+    enabled: true
 
   securityContext:
     # controller.securityContext.enabled -- Enable securityContext.
@@ -448,7 +448,7 @@ webhook:
     # name: webhook-issuer
   podMutatingWebhook:
     # webhook.podMutatingWebhook.enabled -- Enable Pod MutatingWebhook.
-    enabled: true
+    enabled: false
   pvcMutatingWebhook:
     # webhook.pvcMutatingWebhook.enabled -- Enable PVC MutatingWebhook.
     enabled: true
@@ -464,12 +464,17 @@ securityContext:
 podSecurityPolicy:
   # podSecurityPolicy.create -- Enable pod security policy.
   ## ref: https://kubernetes.io/docs/concepts/policy/pod-security-policy/
+  create: false
+
+securityContextConstraint:
+  # securityContextConstraint.create -- Create security context Constraints.
+  ## TODO: add reference
   create: true
 
 cert-manager:
   # cert-manager.enabled -- Install cert-manager together.
   ## ref: https://cert-manager.io/docs/installation/kubernetes/#installing-with-helm
-  enabled: false
+  enabled: true
 
 priorityClass:
   # priorityClass.enabled -- Install priorityClass.
